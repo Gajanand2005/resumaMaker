@@ -1,4 +1,4 @@
-import express from "espress";
+import express from "express";
 import protect from "../middlewares/authMiddleware.js";
 import { createResume, deleteResume, getPublicResumeById, getResumeById, updateResume } from "../controllers/resumeController.js";
 import upload from "../configs/multer.js";

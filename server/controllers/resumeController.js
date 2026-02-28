@@ -1,5 +1,5 @@
 import imagekit from "../configs/imagekit.js";
-import Resume from "../models/Resume.js";
+import Resume from "../models/resumeModel.js";
 import fs from 'fs';
 
 // controller for creating a new resume 
