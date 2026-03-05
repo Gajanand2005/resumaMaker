@@ -1,21 +1,17 @@
 import mongoose from "mongoose";
 
-const connectDB = async () =>{
+const connectDB = async () => {
     try {
-        let mongodbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/your-database-name";
-        const projectName = "resume-builder"
-        if (!mongodbURI) {
-            throw new Error("MONGODB_URI is not defined in the environment variables.")
+        if (!process.env.MONGODB_URL) {
+            throw new Error("MONGODB_URL is not defined in the environment variables.")
         }
-        if (mongodbURI.endsWith("/")) {
-            mongodbURI = mongodbURI.slice(0, -1);
-        }
-        
-        mongoose.connection.on("connected", ()=>{
+
+        mongoose.connection.on("connected", () => {
             console.log("Database connected successfully.....")
         })
 
-        await mongoose.connect(`${mongodbURI}/${projectName}`)
+        await mongoose.connect(process.env.MONGODB_URL)
+
     } catch (error) {
         console.error("Database connection error:", error.message)
     }
